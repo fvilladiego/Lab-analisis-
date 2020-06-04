@@ -1,3 +1,7 @@
+Lab-Analisis es un programa cuyo objetivo es retornar al usuario un analisis de los valores tomados con diferentes herramientas
+estadisticas que permitan visualizar y analizar dichos datos de una manera sencilla.
+
+En el siguiente listado se cataloga el avance realizado en el proyecto y las fechas en las que fue implementado dicho avanza.
 -Interfaz Grafica (Funcional 4-06-2020)
 
 -Ingreso Manual de Los Datos (Incluido En La Interfaz Grafica)
