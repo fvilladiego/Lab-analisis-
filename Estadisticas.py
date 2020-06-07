@@ -1,3 +1,5 @@
+NOTA IMPORTANTE TODAS LAS FUNCIONES ACA TIENEN UNAS VARIABLES DE PRUEBA ESTABLECIDAS NECESITO SABER COMO COORDINAR QUE ESAS VARIABLES
+PROVENGAN DE LO INGRESADO POR EL USUARIO Y NO LAS DE PRUEBA QUE DEJE ESCRITAS
 ##Primeras 14 Lineas Estetica de Los Modulos##
 # importando modulos necesarios
 
@@ -156,44 +158,3 @@ plt.ylabel('frequencia')
 plt.xlabel('valores')
 plt.title('Histograma Normal')
 plt.show(
-
-##Distribucion Continua
-# Graficando Uniforme
-uniforme = stats.uniform()
-x = np.linspace(uniforme.ppf(0.01),
-                uniforme.ppf(0.99), 100)
-fp = uniforme.pdf(x) # Función de Probabilidad
-fig, ax = plt.subplots()
-ax.plot(x, fp, '--')
-ax.vlines(x, 0, fp, colors='b', lw=5, alpha=0.5)
-ax.set_yticks([0., 0.2, 0.4, 0.6, 0.8, 1., 1.2])
-plt.title('Distribución Uniforme')
-plt.ylabel('probabilidad')
-plt.xlabel('valores')
-plt.show()
-# histograma
-aleatorios = uniforme.rvs(1000) # genera aleatorios
-cuenta, cajas, ignorar = plt.hist(aleatorios, 20)
-plt.ylabel('frequencia')
-plt.xlabel('valores')
-plt.title('Histograma Uniforme')
-plt.show()
-
-##Exponencial
-# Graficando Exponencial
-exponencial = stats.expon()
-x = np.linspace(exponencial.ppf(0.01),
-                exponencial.ppf(0.99), 100)
-fp = exponencial.pdf(x) # Función de Probabilidad
-plt.plot(x, fp)
-plt.title('Distribución Exponencial')
-plt.ylabel('probabilidad')
-plt.xlabel('valores')
-plt.show()
-# histograma
-aleatorios = exponencial.rvs(1000) # genera aleatorios
-cuenta, cajas, ignorar = plt.hist(aleatorios, 20)
-plt.ylabel('frequencia')
-plt.xlabel('valores')
-plt.title('Histograma Exponencial')
-plt.show()
