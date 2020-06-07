@@ -3,6 +3,7 @@ Descargar la Carpeta de Interfaz Grafica donde se indica como se puede correr el
 
 Librerías necesarias para el funcionamiento del programa: 
 
+scipy
 matplotlib
 numpy
 pandas
