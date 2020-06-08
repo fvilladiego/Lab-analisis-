@@ -24,7 +24,7 @@ sns.set_context(rc={"figure.figsize": (8, 4)})
 
 ##Distribucion Binomial e Historiagrama
 # Graficando Binomial
-N, p = float(input('Ingrese N')),float(input('ingrese P')) # parametros de forma 
+N, p = int(input('Ingrese N')),float(input('ingrese P')) # parametros de forma 
 binomial = stats.binom(N, p) # Distribución
 x = np.arange(binomial.ppf(0.01),
               binomial.ppf(0.99))
@@ -67,7 +67,7 @@ plt.show()
 
 ##Distribucion Hipergeometrica
 # Graficando Hipergeométrica
-M, n, N = float(input('Ingrese M')), float(input('Ingrese n')), float(input('Ingrese N')) # parametros de forma 
+M, n, N = int(input('Ingrese M')), int(input('Ingrese n')), int(input('Ingrese N')) # parametros de forma 
 hipergeometrica = stats.hypergeom(M, n, N) # Distribución
 x = np.arange(0, n+1)
 fmp = hipergeometrica.pmf(x) # Función de Masa de Probabilidad
