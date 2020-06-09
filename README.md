@@ -7,3 +7,6 @@ scipy
 matplotlib
 numpy
 pandas
+PyQt5
+Sys
+xlrd
