@@ -4,11 +4,13 @@ estadisticas que permitan visualizar y analizar dichos datos de una manera senci
 En el siguiente listado se cataloga el avance realizado en el proyecto y las fechas en las que fue implementado dicho avanza.
 -Interfaz Grafica (Funcional 4-06-2020)
 
--Ingreso Manual de Los Datos (Incluido En La Interfaz Grafica)
+-Ingreso Manual de Los Datos (Incluido En La Interfaz Grafica)(Funcional 11-06-2020)
 
 -Analisis de Imagen
 
--Analisis de Recursos desde Excel
+-Analisis de Recursos desde Excel (Funcional 11-06-2020)
+
+-Exportación de Imágenes de gráficas 
 
 -Estadisticos Basicos
 Media
@@ -39,6 +41,11 @@ Determinación del tamaño de muestra para estimar la media y para la proporció
 -Prueba de hipótesis
 
 -Modelo de regresión
-Recta de mínimos cuadrados
+Recta de mínimos cuadrados (Funcional 11-06-2020)
+Exponencial (Funcional 11-06-2020)
+Logarítimica (Funcional 11-06-2020)
+Polinomial (Funcional 11-06-2020)
+Sinusoidal
+
 
 -Diseño de Boxplot
