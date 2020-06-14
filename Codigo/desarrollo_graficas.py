@@ -116,7 +116,45 @@ class regresion:
         out = 'Coeficientes del polinomio, orden ascendente:  {}'.format(sol)
         
         return(xt,p,out )
-           
+    
+    
+    def sinusoidal(self): #Se debe aclarar al usuario que esta regresión es útil para puntos cercanos al 0, la función coseno tiene un error grande
+    solu =regresion.regresion_pol() #Se debe añadir en el código de interfaz que regresion.regresion_pol devuelva el valor sol, correspondiente a los coeficientes
+    
+    k=0
+    for i in range(1,4):
+        if i%2 != 0:
+            if abs(solu[i]) > abs(solu[i+1]):
+                k +=1
+            else:
+                k -=1
+        else:
+            if abs(solu[i])< abs(solu[i+1]):
+                k +=1
+            else: 
+                k -=1
+                
+    if k > 0: #Seno
+        c = solu[0]
+        w = np.sqrt((abs(solu[3])*6)/(solu[1])) 
+        A = solu[1]/w
+        
+        out =print('{}sin({}x)+{}'.format(A , w ,c))
+       
+        
+    else: #Coseno
+        
+        w =  np.sqrt((abs(solu[4])*24) / (2*abs(solu[2]))) 
+        
+        A = (abs(solu[2])*2) / (w**2)
+        
+        c = solu[0] - A
+
+        out =print('{}cos({}x)+{}'.format(A , w ,c))
+         
+    return out
+          
+        
 lista_regresion= {'L' : regresion.regresion_l, 'SLG' : regresion.regresion_slg , 'LG' : regresion.regresion_lg , 'POL' : regresion.regresion_pol}
 
 
