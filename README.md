@@ -6,7 +6,7 @@ Lab-analisis es un programa que facilita el analisis de laboratorios gracias a e
 ## Empezando
 El programa fue desarrollado en Python 3.7, en múltiples plataformas por lo cúal es poco probable que ocurran conflictos de hardware.
 
-### Prerequisites
+### Prerequisitos
 Python 3.7
 
 Librerías necesarias para el funcionamiento del programa:
@@ -22,7 +22,7 @@ xlrd
 ```
 Se recomienda usar la última versión de estas.
 
-### Installing
+### Instalación
 
 A continuación la lista de pasos para la correcta instalación del programa:
 
@@ -56,11 +56,11 @@ Lab-analisis permite al usuario usar 6 tipos de Distribuciones de probabilidad: 
 
 Contacto directamente por Github.
 
-## Versioning
+## Versión actual
 
 v.0.1
 
-## Authors
+## Autores
 
 * **Juan Bustos** - *Distribuciones y general* - [nombre1](link)
 * **Daniel Pineda** - *Interfaz gráfica y general* - [nombre2](link)
@@ -68,7 +68,7 @@ v.0.1
 
 Véase también la lista de contribuyentes (link) que participaron en este proyecto.
 
-## License
+## Licencia
 
 Por definir.
 
