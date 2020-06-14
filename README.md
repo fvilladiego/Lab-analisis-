@@ -62,11 +62,11 @@ v.0.1
 
 ## Autores
 
-* **Juan Bustos** - *Distribuciones y general* - [nombre1](link)
-* **Daniel Pineda** - *Interfaz gráfica y general* - [nombre2](link)
-* **Federico Villadiego** - *Regresiones y general* - [fvilladiego](link)
+* **Juan Bustos** - *Distribuciones y general* - [JuanebsJ8](https://github.com/JuanebsJ8)
+* **Daniel Pineda** - *Interfaz gráfica y general* - [CapMatro](https://github.com/CapMatro)
+* **Federico Villadiego** - *Regresiones y general* - [fvilladiego](https://github.com/fvilladiego)
 
-Véase también la lista de contribuyentes (link) que participaron en este proyecto.
+Véase también la lista de contribuyentes (https://github.com/fvilladiego/Lab-analisis-/graphs/contributors) que participaron en este proyecto.
 
 ## Licencia
 
