@@ -9,13 +9,9 @@ from scipy import stats
 import pandas as pd
 from scipy.optimize import fsolve
 from math import e
-import seaborn as sns 
 
 np.random.seed(2016) # replicar random
 
-# parametros esteticos de seaborn
-sns.set_palette("deep", desat=.6)
-sns.set_context(rc={"figure.figsize": (8, 4)})
 ##Historiagramas##
 
 
