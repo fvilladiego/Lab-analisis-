@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np 
 from scipy import stats 
-import seaborn as sns
+import math
 
 ###Calculo De Probabilidades
 
@@ -26,8 +26,7 @@ print('La Probabilidad Porcentual del suceso es:',str(round(ProbabilidadPorcentu
 #Variables
 n = int(input('ingrese cantidad a elegir'))
 k = int(input('ingrese elegidos'))
-
-# Determine permutations and print result
+# Determine las Permutaciones
 Permutaciones = math.factorial(n) / math.factorial(n-k)
 print('De',n,'Casos obtienes un arreglo de: ',Permutaciones)
 
@@ -36,8 +35,16 @@ print('De',n,'Casos obtienes un arreglo de: ',Permutaciones)
 #Variables
 n = int(input('ingrese cantidad a elegir'))
 k = int(input('ingrese elegidos'))
-
-# Determine permutations and print result
+# Determinar Las Combinaciones
 Permutaciones = math.factorial(n) / math.factorial(n-k)
 Combinaciones = Permutaciones / math.factorial(k)
 print('De',n,'Casos obtienes un arreglo de: ',Combinaciones)
+
+##Valor Esperado Simple
+# Initialize `pot` and `probability` variables
+Valor = float(input('ingrese el valor del suceso '))
+Probabilidad = float(input('ingrese probabilidad del suceso '))
+# Valor Esperado
+ValorEsperado = Valor * Probabilidad
+print('El Valor Esperado es: ', ValorEsperado)
+
