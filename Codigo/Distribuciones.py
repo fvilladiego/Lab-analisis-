@@ -170,7 +170,7 @@ plt.show()
 ##Distribucion Uniforme
 # Graficando Uniforme
 m=float(input('ingrese valor inicial '))
-v=float(input('ingrese varianza '))
+v=float(input('ingrese longitud del intervalo '))
 uniforme = stats.uniform(m,v)
 x = np.linspace(uniforme.ppf(0.01),
                 uniforme.ppf(0.99), 100)
