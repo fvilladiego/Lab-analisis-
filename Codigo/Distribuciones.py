@@ -29,7 +29,7 @@ binomial = stats.binom(N, p) # Distribución
 x = np.arange(binomial.ppf(0.01),
               binomial.ppf(0.99))
 fmp = binomial.pmf(x) # Función de Masa de Probabilidad
-plt.plot(x, fmp, '--')
+plt.plot(x, fmp,color=[1,1,0], '--')
 plt.vlines(x, 0, fmp, colors='b', lw=5, alpha=0.5)
 plt.title('Distribución Binomial')
 plt.ylabel('probabilidad')
@@ -51,7 +51,7 @@ geometrica = stats.geom(p) # Distribución
 x = np.arange(geometrica.ppf(0.01),
               geometrica.ppf(0.99))
 fmp = geometrica.pmf(x) # Función de Masa de Probabilidad
-plt.plot(x, fmp, '--')
+plt.plot(x, fmp,color=[1,1,0], '--')
 plt.vlines(x, 0, fmp, colors='b', lw=5, alpha=0.5)
 plt.title('Distribución Geométrica')
 plt.ylabel('probabilidad')
@@ -71,7 +71,7 @@ M, n, N = int(input('Ingrese M')), int(input('Ingrese n')), int(input('Ingrese N
 hipergeometrica = stats.hypergeom(M, n, N) # Distribución
 x = np.arange(0, n+1)
 fmp = hipergeometrica.pmf(x) # Función de Masa de Probabilidad
-plt.plot(x, fmp, '--')
+plt.plot(x, fmp,color=[1,1,0], '--')
 plt.vlines(x, 0, fmp, colors='b', lw=5, alpha=0.5)
 plt.title('Distribución Hipergeométrica')
 plt.ylabel('probabilidad')
@@ -93,7 +93,7 @@ bernoulli = stats.bernoulli(p)
 x = np.arange(-1, 3)
 fmp = bernoulli.pmf(x) # Función de Masa de Probabilidad
 fig, ax = plt.subplots()
-ax.plot(x, fmp, 'bo')
+ax.plot(x, fmp, color=[1,1,0])
 ax.vlines(x, 0, fmp, colors='b', lw=5, alpha=0.5)
 ax.set_yticks([0., 0.2, 0.4, 0.6])
 plt.title('Distribución Bernoulli')
@@ -115,7 +115,7 @@ poisson = stats.poisson(mu) # Distribución
 x = np.arange(poisson.ppf(0.01),
               poisson.ppf(0.99))
 fmp = poisson.pmf(x) # Función de Masa de Probabilidad
-plt.plot(x, fmp, '--')
+plt.plot(x, fmp,color=[1,1,0], '--')
 plt.vlines(x, 0, fmp, colors='b', lw=5, alpha=0.5)
 plt.title('Distribución Poisson')
 plt.ylabel('probabilidad')
@@ -136,7 +136,7 @@ normal = stats.norm(mu, sigma)
 x = np.linspace(normal.ppf(0.01),
                 normal.ppf(0.99), 100)
 fp = normal.pdf(x) # Función de Probabilidad
-plt.plot(x, fp)
+plt.plot(x, fp,color=[1,1,0])
 plt.title('Distribución Normal')
 plt.ylabel('probabilidad')
 plt.xlabel('valores')
@@ -157,7 +157,7 @@ exponencial = stats.expon(a)
 x = np.linspace(exponencial.ppf(0.01),
                 exponencial.ppf(0.99), 100)
 fp =exponencial.pdf(x) # Función de Probabilidad
-plt.plot(x, fp)
+plt.plot(x, fp,color=[1,1,0])
 plt.title('Distribución Exponencial')
 plt.ylabel('probabilidad')
 plt.xlabel('valores')
@@ -178,7 +178,7 @@ x = np.linspace(uniforme.ppf(0.01),
                 uniforme.ppf(0.99), 100)
 fp = uniforme.pdf(x) # Función de Probabilidad
 fig, ax = plt.subplots()
-ax.plot(x, fp, '--')
+ax.plot(x, fp,color=[1,1,0], '--')
 ax.vlines(x, 0, fp, colors='b', lw=5, alpha=0.5)
 ax.set_yticks([0., 0.2, 0.4, 0.6, 0.8, 1., 1.2])
 plt.title('Distribución Uniforme')
