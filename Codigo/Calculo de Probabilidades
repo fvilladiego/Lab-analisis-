@@ -30,3 +30,14 @@ k = int(input('ingrese elegidos'))
 # Determine permutations and print result
 Permutaciones = math.factorial(n) / math.factorial(n-k)
 print('De',n,'Casos obtienes un arreglo de: ',Permutaciones)
+
+
+##Combinaciones
+#Variables
+n = int(input('ingrese cantidad a elegir'))
+k = int(input('ingrese elegidos'))
+
+# Determine permutations and print result
+Permutaciones = math.factorial(n) / math.factorial(n-k)
+Combinaciones = Permutaciones / math.factorial(k)
+print('De',n,'Casos obtienes un arreglo de: ',Combinaciones)
