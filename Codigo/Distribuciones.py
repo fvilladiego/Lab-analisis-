@@ -169,12 +169,14 @@ plt.show()
 
 ##Distribucion Uniforme
 # Graficando Uniforme
-uniforme = stats.uniform()
+m=float(input('ingrese valor inicial '))
+v=float(input('ingrese varianza '))
+uniforme = stats.uniform(m,v)
 x = np.linspace(uniforme.ppf(0.01),
                 uniforme.ppf(0.99), 100)
 fp = uniforme.pdf(x) # Función de Probabilidad
 fig, ax = plt.subplots()
-ax.plot(x, fp,color=[1,1,0], '--')
+ax.plot(x, fp, '--')
 ax.vlines(x, 0, fp, colors='b', lw=5, alpha=0.5)
 ax.set_yticks([0., 0.2, 0.4, 0.6, 0.8, 1., 1.2])
 plt.title('Distribución Uniforme')
