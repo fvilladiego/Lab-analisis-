@@ -19,3 +19,14 @@ print('La Probabilidad del suceso es:',round(Probabilidad, 4))
 ProbabilidadPorcentual = Probabilidad * 100
 # Probabilidad con 4 decimales
 print('La Probabilidad Porcentual del suceso es:',str(round(ProbabilidadPorcentual, 4)) + '%')
+###Calculo De Probabilidades
+
+
+##Permutaciones
+#Variables
+n = int(input('ingrese cantidad a elegir'))
+k = int(input('ingrese elegidos'))
+
+# Determine permutations and print result
+Permutaciones = math.factorial(n) / math.factorial(n-k)
+print('De',n,'Casos obtienes un arreglo de: ',Permutaciones)
