@@ -59,5 +59,10 @@ pk= p**k
 pk2= (1-p)**(n-k)
 y=n_k*pk*pk2
 print('exactamente',k,'éxitos en',n,'pruebas si la probabilidad de éxito en una sola prueba es',p,'es: ',y)
-
+#Media
+media=n*p
+print('La Media es',media)
+#Varianza
+varianza=media*(1-p)
+print('La Varianza es',varianza)
 
