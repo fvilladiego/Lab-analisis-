@@ -79,3 +79,23 @@ print('La Media es',media)
 #Varianza
 varianza=(1-p)/(p**2)
 print('La Varianza es',varianza)
+
+
+##Distribucion Hipergeometrica
+N=int(input('Numero de Elementos Totales '))
+d=int(input('Numero de Elementos Con la caracteristica deseada '))
+n=int(input('Numero de Elementos que se tomaron '))
+x=int(input('Numero de Elementos que se desea encontrar '))
+a= N-d
+b= n-x
+c=math.factorial(d)/(math.factorial(d-x)*math.factorial(x) )
+d=math.factorial(a)/(math.factorial(a-b)*math.factorial(b) )
+e=math.factorial(N)/(math.factorial(N-n)*math.factorial(n) )
+y=(c*d)/e
+print('La Probabilidad de encontrar',x,'objetos en el grupo es',y)
+#Media
+media=(n*d)/N
+print('La Media es',media)
+#Varianza
+varianza=(n*(d/N)*(1-(d/N))*(N-n))/(N-1)
+print('La Varianza es',varianza)
