@@ -99,3 +99,20 @@ print('La Media es',media)
 #Varianza
 varianza=(n*(d/N)*(1-(d/N))*(N-n))/(N-1)
 print('La Varianza es',varianza)
+
+
+##Distribucion Poisson
+x=float(input('Ingrese Miu '))
+a=float(input('Ingrese el intervalo de tiempo'))
+k=float(input('Ingrese numero de sucesos'))
+alfa=x*a
+c=math.exp(-alfa)
+d=alfa**k
+y=(c*d)/math.factorial(k)
+print('La Probabilidad de que ocurra',k,'sucesos en el tiempo',a,'es',y)
+#Media
+media=alfa
+print('La Media es',media)
+#Varianza
+varianza=alfa
+print('La Varianza es',varianza)
