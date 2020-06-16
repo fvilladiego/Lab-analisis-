@@ -66,3 +66,16 @@ print('La Media es',media)
 varianza=media*(1-p)
 print('La Varianza es',varianza)
 
+
+##Distribucion Geometrica
+r=int(input('Ingrese Numero de Pruebas '))
+p=float(input('Ingrese Probabilidad del Suceso '))
+k=(1-p)**(r-1)
+y=p*k
+print('La Probabilidad del Exito en',r,'intentos es',y)
+#Media
+media=1/p
+print('La Media es',media)
+#Varianza
+varianza=(1-p)/(p**2)
+print('La Varianza es',varianza)
