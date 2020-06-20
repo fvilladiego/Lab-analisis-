@@ -323,6 +323,16 @@ class programa(QMainWindow):
         pyplot.axvline(0, color="black")
         plt.show()
         plt.close()
+        
+        yp = x*slope + intercept
+        
+        R2 = (np.var(yp))/(np.var(y))
+        
+        
+        
+        return R2
+        
+        
     def regresionlg(self):
         if self.pos==False:
             if self.cantidad() == None:
@@ -377,6 +387,16 @@ class programa(QMainWindow):
         pyplot.axvline(0, color="black")
         plt.show()
         plt.close()
+        
+        yp= a*(x)**b
+        
+        
+        R2 = (np.var(yp))/(np.var(y))
+        
+        
+        
+        return R2
+        
     def regresionslg(self):
         if self.pos==False:
             if self.cantidad() == None:
@@ -427,6 +447,18 @@ class programa(QMainWindow):
         pyplot.axvline(0, color="black")
         plt.show()
         plt.close()
+        
+        
+        yp = b*(e)**(m*x)
+        
+        R2 = (np.var(yp))/(np.var(y))
+        
+        
+        
+        return R2
+        
+        
+        
     def regresionpol(self):
         if self.pos==False:
             if self.cantidad() == None:
@@ -518,6 +550,12 @@ class programa(QMainWindow):
         pyplot.axvline(0, color="black")
         plt.show()
         plt.close()
+        
+        yp= PolyCoefficients(x,sol)
+        R2 = (np.var(yp))/(np.var(y))
+        
+        return R2
+        
     #Modelos de probabilidad
     def bernoulli(self):
         # parametros esteticos de seaborn
@@ -970,6 +1008,12 @@ class programa(QMainWindow):
             plt.legend()
             plt.show()
             plt.close()
+            
+            yp = A *np.sin(w*x) + c
+            
+            R2 = (np.var(yp))/(np.var(y))
+
+            return R2
 
         else:  # Coseno
 
@@ -999,6 +1043,39 @@ class programa(QMainWindow):
             plt.legend()
             plt.show()
             plt.close()
+            
+            
+            yp = A *np.cos(w*x) + c
+            
+            R2 = (np.var(yp))/(np.var(y))
+
+            return R2
+    
+    ##Funcion regresión automática- puede que tenga errores pero debería funcionar
+    
+    def re_auto():
+        #Se llaman las regresiones para almacenar los valores en una tupla llamada tp
+        (rlineal,rlog,rsemilog,rpoli,rsinu) = programa.reglineal , programa.regresionlg , programa.regresionslg , programa.regresionpol , programa.sinusoidal 
+        
+        tup = (rlineal,rlog,rsemilog,rpoli,rsinu)
+        
+        k= []
+        ##Se añade a la lista k la distancia de r a 1, y se almacenan en el mismo orden que tup
+        for i in tup:
+            r=np.abs(i-1)
+            k.append(r)
+        ##Se encuentra el índice del valor mínimo de tup para así saber a que regresión hace referencia
+        for p in range(len(k)):
+            if k[p] == np.min(k):
+                break
+        
+        ##Esta tupla tiene el mismo orden de tup y sencillamente sirve para devolver cúal sería la regresion adecuada
+        tupstr= ('rlineal','rlog','rsemilog','rpoli','rsinu')
+        
+        print(tupstr(p))
+    
+    
+    
     #colores regresiones
     def rojo(self):
         r = self.srojo.value()
@@ -1470,3 +1547,5 @@ if __name__ == "__main__":
     GUI = programa()
     GUI.show()
     sys.exit(prog.exec_())
+    
+    
