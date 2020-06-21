@@ -17,12 +17,25 @@ class programa(QMainWindow):
         super().__init__()
         uic.loadUi("programa.ui", self)
         self.pos=False
+
+        self.lin=False
+        self.lg=False
+        self.sg=False
+        self.pl=False
+        self.sn=False
+
+        self.grd=False
+
         #botones
         self.graficar.clicked.connect(self.grafica)
         self.aceptar.clicked.connect(self.cantidad)
+        self.lineal.clicked.connect(self.gralin)
         self.lineal.clicked.connect(self.reglineal)
+        self.slg.clicked.connect(self.graslog)
         self.slg.clicked.connect(self.regresionslg)
+        self.pol.clicked.connect(self.grapol)
         self.pol.clicked.connect(self.regresionpol)
+        self.log.clicked.connect(self.gralog)
         self.log.clicked.connect(self.regresionlg)
         self.disb.clicked.connect(self.bernoulli)
         self.histbern.clicked.connect(self.histbernoulli)
@@ -38,9 +51,12 @@ class programa(QMainWindow):
         self.histpo.clicked.connect(self.histpoisson)
         self.exc.clicked.connect(self.excel)
         self.exc.clicked.connect(self.errores)
+        self.sen.clicked.connect(self.grasin)
         self.sen.clicked.connect(self.sinusoidal)
         self.unif.clicked.connect(self.uniforme)
         self.hunif.clicked.connect(self.huniforme)
+        self.aut.clicked.connect(self.re_auto)
+
         #deslizador colores regresiones
         self.rojop.valueChanged.connect(self.punrojo)
         self.azulp.valueChanged.connect(self.punazul)
@@ -233,6 +249,17 @@ class programa(QMainWindow):
 
 
         return lista
+    def gralin(self):
+        self.lin=True
+
+    def gralog(self):
+        self.lg=True
+    def graslog(self):
+        self.sg=True
+    def grapol(self):
+        self.pl=True
+    def grasin(self):
+        self.sn=True
     def errores(self):
         if self.excel()!=None and self.excel()!=0 and self.excel()!=1:
             self.hojj()
@@ -285,47 +312,52 @@ class programa(QMainWindow):
         if self.pos==False:
             if self.cantidad() == None:
                 self.erdatos()
+                self.lin =False
                 return None
             if self.datos() == None:
+                self.lin =False
                 return None
             datos = np.array(self.datos())
         if self.pos==True:
             if self.excel() == None or self.excel() == 0 or self.excel() == 1:
                 self.erdatos()
+                self.lin = False
                 return None
             if self.excel() == []:
                 self.cal()
+                self.lin = False
                 return None
             datos=np.array(self.excel())
         slope, intercept, r_value, p_value, std_err = stats.linregress(datos[:, 0], datos[:, 1])
         xt = np.linspace(0, datos[-1, -1] + 0.5, 1000)
         rl = xt * slope + intercept
         st = ' Ec. encontrada : y= {}x + {}'.format(slope, intercept)
-        self.reglin.setText(st)
+
         x = np.array(datos[:, 0])
         y = np.array(datos[:, 1])
         (xe, ye, out) = (xt, rl, st)
-        regraph = True
 
-        graph_title = self.nlineal.text()
-        graph_x = self.xlineal.text()
-        graph_y = self.ylineal.text()
+        if self.lin==True:
+            self.reglin.setText(st)
+            graph_title = self.nlineal.text()
+            graph_x = self.xlineal.text()
+            graph_y = self.ylineal.text()
 
-        plt.scatter(x, y, color=(self.linealrojo(),self.linealverde(),self.linealazul()), label='Datos experimentales')
-        if regraph:
+            plt.scatter(x, y, color=(self.linealrojo(),self.linealverde(),self.linealazul()), label='Datos experimentales')
+
             plt.plot(xe, ye, color=(self.rojo(),self.verde(),self.azul()), label='Regresion encontrada')
-        plt.suptitle(graph_title)
-        plt.xlabel(graph_x)
-        plt.ylabel(graph_y)
-        plt.grid(b=True)
-        plt.legend()
-        pyplot.axhline(0, color="black")
-        pyplot.axvline(0, color="black")
-        plt.show()
-        plt.close()
-        
+            plt.suptitle(graph_title)
+            plt.xlabel(graph_x)
+            plt.ylabel(graph_y)
+            plt.grid(b=True)
+            plt.legend()
+            pyplot.axhline(0, color="black")
+            pyplot.axvline(0, color="black")
+            plt.show()
+            plt.close()
+            self.lin=False
         yp = x*slope + intercept
-        
+
         R2 = (np.var(yp))/(np.var(y))
         
         
@@ -337,16 +369,20 @@ class programa(QMainWindow):
         if self.pos==False:
             if self.cantidad() == None:
                 self.erdatos()
+                self.lg = False
                 return None
             if self.datos() == None:
+                self.lg = False
                 return None
             datos = np.array(self.datos())
         if self.pos==True:
             if self.excel() == None or self.excel() == 0 or self.excel() == 1:
                 self.erdatos()
+                self.lg = False
                 return None
             if self.excel() == []:
                 self.cal()
+                self.lg = False
                 return None
             datos=np.array(self.excel())
         ly = np.log(datos[:, 1])
@@ -366,28 +402,29 @@ class programa(QMainWindow):
         rlg = a * (xt) ** b
 
         out = 'Ec. encontrada : {}x^{}'.format(a, b)
-        self.reglg.setText(out)
+
         x = np.array(datos[:, 0])
         y = np.array(datos[:, 1])
         (xe, ye, out)= (xt, rlg, out)
+        if self.lg==True:
+            self.reglg.setText(out)
+            graph_title = self.nlog.text()
+            graph_x = self.xlog.text()
+            graph_y = self.ylog.text()
 
-        graph_title = self.nlog.text()
-        graph_x = self.xlog.text()
-        graph_y = self.ylog.text()
+            plt.scatter(x, y, color=(self.logarojo(),self.logaverde(),self.logaazul()), label='Datos experimentales')
 
-        plt.scatter(x, y, color=(self.logarojo(),self.logaverde(),self.logaazul()), label='Datos experimentales')
-
-        plt.plot(xe, ye,color=(self.glogrojo(),self.glogverde(),self.glogazul()), label='Regresion encontrada')
-        plt.suptitle(graph_title)
-        plt.xlabel(graph_x)
-        plt.ylabel(graph_y)
-        plt.grid(b=True)
-        plt.legend()
-        pyplot.axhline(0, color="black")
-        pyplot.axvline(0, color="black")
-        plt.show()
-        plt.close()
-        
+            plt.plot(xe, ye,color=(self.glogrojo(),self.glogverde(),self.glogazul()), label='Regresion encontrada')
+            plt.suptitle(graph_title)
+            plt.xlabel(graph_x)
+            plt.ylabel(graph_y)
+            plt.grid(b=True)
+            plt.legend()
+            pyplot.axhline(0, color="black")
+            pyplot.axvline(0, color="black")
+            plt.show()
+            plt.close()
+        self.lg=False
         yp= a*(x)**b
         
         
@@ -401,16 +438,20 @@ class programa(QMainWindow):
         if self.pos==False:
             if self.cantidad() == None:
                 self.erdatos()
+                self.sg = False
                 return None
             if self.datos() == None:
+                self.sg = False
                 return None
             datos = np.array(self.datos())
         if self.pos==True:
             if self.excel() == None or self.excel() == 0 or self.excel() == 1:
                 self.erdatos()
+                self.sg = False
                 return None
             if self.excel() == []:
                 self.cal()
+                self.sg = False
                 return None
             datos=np.array(self.excel())
         ly = np.log(datos[:, 1])
@@ -426,28 +467,30 @@ class programa(QMainWindow):
         xt = np.linspace(0, datos[-1, -1] + 0.5, 1000)
         rslg = b * (e) ** (m * xt)
         out = 'Ec. encontrada : {}e^({}x)'.format(b, m)
-        self.regslg.setText(out)
+
         x = np.array(datos[:, 0])
         y = np.array(datos[:, 1])
         (xe, ye, out) = (xt, rslg, out)
 
-        graph_title = self.nsemi.text()
-        graph_x = self.xsemi.text()
-        graph_y = self.ysemi.text()
+        if self.sg==True:
+            self.regslg.setText(out)
+            graph_title = self.nsemi.text()
+            graph_x = self.xsemi.text()
+            graph_y = self.ysemi.text()
 
-        plt.scatter(x, y, color=(self.psemirojo(),self.psemiverde(),self.psemiazul()), label='Datos experimentales')
-        plt.plot(xe, ye,color=(self.gsemirojo(),self.gsemiverde(),self.gsemiazul()), label='Regresion encontrada')
+            plt.scatter(x, y, color=(self.psemirojo(),self.psemiverde(),self.psemiazul()), label='Datos experimentales')
+            plt.plot(xe, ye,color=(self.gsemirojo(),self.gsemiverde(),self.gsemiazul()), label='Regresion encontrada')
 
-        plt.suptitle(graph_title)
-        plt.xlabel(graph_x)
-        plt.ylabel(graph_y)
-        plt.grid(b=True)
-        plt.legend()
-        pyplot.axhline(0, color="black")
-        pyplot.axvline(0, color="black")
-        plt.show()
-        plt.close()
-        
+            plt.suptitle(graph_title)
+            plt.xlabel(graph_x)
+            plt.ylabel(graph_y)
+            plt.grid(b=True)
+            plt.legend()
+            pyplot.axhline(0, color="black")
+            pyplot.axvline(0, color="black")
+            plt.show()
+            plt.close()
+        self.sg=False
         
         yp = b*(e)**(m*x)
         
@@ -463,23 +506,41 @@ class programa(QMainWindow):
         if self.pos==False:
             if self.cantidad() == None:
                 self.erdatos()
+                self.pl = False
                 return None
             if self.datos() == None:
+                self.pl = False
                 return None
             datos = np.array(self.datos())
         if self.pos==True:
             if self.excel() == None or self.excel() == 0 or self.excel() == 1:
                 self.erdatos()
+                self.pl = False
                 return None
             if self.excel() == []:
                 self.cal()
+                self.pl = False
                 return None
             datos=np.array(self.excel())
-        try:
-            g = int(self.grad.text())
-        except:
-            self.err()
-            return None
+
+        if self.grd==False:
+            try:
+                g = int(self.grad.text())
+
+
+            except:
+                self.gran()
+                self.pl = False
+                return None
+        if self.grd==True:
+            try:
+                g = int(self.gra.text())
+
+
+            except:
+                self.gran()
+                self.pl = False
+                return None
         n = np.size(datos[:, 0])
 
         A = np.empty([g + 1, g + 1])
@@ -531,25 +592,28 @@ class programa(QMainWindow):
         p = PolyCoefficients(xt, sol)
 
         out = 'Coeficientes del polinomio, orden ascendente: {}'.format(sol)
-        self.cua.setText(out)
+
         (xe, ye, out)=(xt, p, out)
 
-        graph_title = self.npol.text()
-        graph_x = self.xpol.text()
-        graph_y = self.ypol.text()
+        if self.pl==True:
+            self.cua.setText(out)
+            graph_title = self.npol.text()
+            graph_x = self.xpol.text()
+            graph_y = self.ypol.text()
 
-        plt.scatter(x, y, color=(self.ppolrojo(),self.ppolverde(),self.ppolazul()), label='Datos experimentales')
-        plt.plot(xe, ye,color=(self.gpolrojo(),self.gpolverde(),self.gpolazul()), label='Regresion encontrada')
+            plt.scatter(x, y, color=(self.ppolrojo(),self.ppolverde(),self.ppolazul()), label='Datos experimentales')
+            plt.plot(xe, ye,color=(self.gpolrojo(),self.gpolverde(),self.gpolazul()), label='Regresion encontrada')
 
-        plt.suptitle(graph_title)
-        plt.xlabel(graph_x)
-        plt.ylabel(graph_y)
-        plt.grid(b=True)
-        plt.legend()
-        pyplot.axhline(0, color="black")
-        pyplot.axvline(0, color="black")
-        plt.show()
-        plt.close()
+            plt.suptitle(graph_title)
+            plt.xlabel(graph_x)
+            plt.ylabel(graph_y)
+            plt.grid(b=True)
+            plt.legend()
+            pyplot.axhline(0, color="black")
+            pyplot.axvline(0, color="black")
+            plt.show()
+            plt.close()
+        self.pl=False
         
         yp= PolyCoefficients(x,sol)
         R2 = (np.var(yp))/(np.var(y))
@@ -923,16 +987,20 @@ class programa(QMainWindow):
         if self.pos==False:
             if self.cantidad() == None:
                 self.erdatos()
+                self.sn = False
                 return None
             if self.datos() == None:
+                self.sn = False
                 return None
             datos = np.array(self.datos())
         if self.pos==True:
             if self.excel() == None or self.excel() == 0 or self.excel() == 1:
                 self.erdatos()
+                self.sn = False
                 return None
             if self.excel() == []:
                 self.cal()
+                self.sn = False
                 return None
             datos=np.array(self.excel())
         n = np.size(datos[:, 0])
@@ -989,26 +1057,29 @@ class programa(QMainWindow):
             A = solu[1] / w
 
             out = '{}sin({}x)+{}'.format(A, w, c)
-            self.sin.setText(out)
+
             seno = A * np.sin(w * xt) + c
-            plt.plot(x, y)
 
-            graph_title = self.nsin.text()
-            graph_x = self.xsin.text()
-            graph_y = self.ysin.text()
+            if self.sn==True:
+                self.sin.setText(out)
+                plt.plot(x, y)
 
-            plt.scatter(x, y, color=(self.senrojo(),self.senverde(),self.senazul()), label='Datos experimentales')
-            plt.plot(xt, seno,color=(self.gsenrojo(),self.gsenverde(),self.gsenazul()) ,label=out)
-            pyplot.axhline(0, color="black")
-            pyplot.axvline(0, color="black")
-            plt.suptitle(graph_title)
-            plt.xlabel(graph_x)
-            plt.ylabel(graph_y)
-            plt.grid(b=True)
-            plt.legend()
-            plt.show()
-            plt.close()
-            
+                graph_title = self.nsin.text()
+                graph_x = self.xsin.text()
+                graph_y = self.ysin.text()
+
+                plt.scatter(x, y, color=(self.senrojo(),self.senverde(),self.senazul()), label='Datos experimentales')
+                plt.plot(xt, seno,color=(self.gsenrojo(),self.gsenverde(),self.gsenazul()) ,label=out)
+                pyplot.axhline(0, color="black")
+                pyplot.axvline(0, color="black")
+                plt.suptitle(graph_title)
+                plt.xlabel(graph_x)
+                plt.ylabel(graph_y)
+                plt.grid(b=True)
+                plt.legend()
+                plt.show()
+                plt.close()
+            self.sn=False
             yp = A *np.sin(w*x) + c
             
             R2 = (np.var(yp))/(np.var(y))
@@ -1027,22 +1098,25 @@ class programa(QMainWindow):
             self.sin.setText(out)
             coseno = A * np.cos(w * xt) + c
 
-            plt.plot(x, y)
-            graph_title = self.nsin.text()
-            graph_x = self.xsin.text()
-            graph_y = self.ysin.text()
 
-            plt.scatter(x, y, color=(self.senrojo(), self.senverde(), self.senazul()), label='Datos experimentales')
-            plt.plot(xt, coseno, color=(self.gsenrojo(), self.gsenverde(), self.gsenazul()), label=out)
-            pyplot.axhline(0, color="black")
-            pyplot.axvline(0, color="black")
-            plt.suptitle(graph_title)
-            plt.xlabel(graph_x)
-            plt.ylabel(graph_y)
-            plt.grid(b=True)
-            plt.legend()
-            plt.show()
-            plt.close()
+            if self.sn==True:
+                plt.plot(x, y)
+                graph_title = self.nsin.text()
+                graph_x = self.xsin.text()
+                graph_y = self.ysin.text()
+
+                plt.scatter(x, y, color=(self.senrojo(), self.senverde(), self.senazul()), label='Datos experimentales')
+                plt.plot(xt, coseno, color=(self.gsenrojo(), self.gsenverde(), self.gsenazul()), label=out)
+                pyplot.axhline(0, color="black")
+                pyplot.axvline(0, color="black")
+                plt.suptitle(graph_title)
+                plt.xlabel(graph_x)
+                plt.ylabel(graph_y)
+                plt.grid(b=True)
+                plt.legend()
+                plt.show()
+                plt.close()
+                self.sn=False
             
             
             yp = A *np.cos(w*x) + c
@@ -1050,31 +1124,53 @@ class programa(QMainWindow):
             R2 = (np.var(yp))/(np.var(y))
 
             return R2
+
     
-    ##Funcion regresión automática- puede que tenga errores pero debería funcionar
-    
-    def re_auto():
+    def re_auto(self):
+        if self.pos==False:
+            if self.cantidad() == None:
+                self.erdatos()
+                return None
+            if self.datos() == None:
+                return None
+
+        if self.pos==True:
+            if self.excel() == None or self.excel() == 0 or self.excel() == 1:
+                self.erdatos()
+                self.pos=False
+
+                return None
+            if self.excel() == []:
+                self.cal()
+                return None
+        self.grd = True
+        if self.regresionpol()==None:
+            return None
+
+
         #Se llaman las regresiones para almacenar los valores en una tupla llamada tp
-        (rlineal,rlog,rsemilog,rpoli,rsinu) = programa.reglineal , programa.regresionlg , programa.regresionslg , programa.regresionpol , programa.sinusoidal 
-        
+        (rlineal,rlog,rsemilog,rpoli,rsinu) = self.reglineal(),self.regresionlg(),self.regresionslg(),self.regresionpol(),self.sinusoidal()
+
         tup = (rlineal,rlog,rsemilog,rpoli,rsinu)
-        
+        self.grd=False
         k= []
         ##Se añade a la lista k la distancia de r a 1, y se almacenan en el mismo orden que tup
         for i in tup:
             r=np.abs(i-1)
             k.append(r)
+
         ##Se encuentra el índice del valor mínimo de tup para así saber a que regresión hace referencia
         for p in range(len(k)):
             if k[p] == np.min(k):
                 break
-        
+
         ##Esta tupla tiene el mismo orden de tup y sencillamente sirve para devolver cúal sería la regresion adecuada
-        tupstr= ('rlineal','rlog','rsemilog','rpoli','rsinu')
-        
-        print(tupstr(p))
-    
-    
+        tupstr= ('Regresión lineal','Regresión logaritmica','Regresión semi-logaritmica','Regresión polinomial','Regresión sinusoidal')
+        self.atreg.setText("La mejor regresión es: ")
+        self.autr.setText(tupstr[p])
+
+
+
     
     #colores regresiones
     def rojo(self):
@@ -1538,6 +1634,12 @@ class programa(QMainWindow):
         msg = QMessageBox()
         msg.setWindowTitle("Hoja cargada")
         msg.setText("No se reconocen los datos de la hoja de calculo")
+        msg.setIcon(QMessageBox.Critical)
+        msg.exec_()
+    def gran(self):
+        msg = QMessageBox()
+        msg.setWindowTitle("ERRO")
+        msg.setText("No ha ingresado un valor valido para los grados de su polinomio")
         msg.setIcon(QMessageBox.Critical)
         msg.exec_()
 

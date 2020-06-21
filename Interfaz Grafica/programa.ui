@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tato">
+   <widget class="QTabWidget" name="atr">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -35,7 +35,7 @@
        <rect>
         <x>0</x>
         <y>10</y>
-        <width>121</width>
+        <width>141</width>
         <height>23</height>
        </rect>
       </property>
@@ -47,7 +47,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>110</y>
+        <y>70</y>
         <width>141</width>
         <height>23</height>
        </rect>
@@ -59,7 +59,7 @@
      <widget class="QLabel" name="reglin">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>150</x>
         <y>10</y>
         <width>561</width>
         <height>20</height>
@@ -73,7 +73,7 @@
       <property name="geometry">
        <rect>
         <x>150</x>
-        <y>110</y>
+        <y>70</y>
         <width>561</width>
         <height>20</height>
        </rect>
@@ -86,8 +86,8 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>60</y>
-        <width>131</width>
+        <y>40</y>
+        <width>141</width>
         <height>23</height>
        </rect>
       </property>
@@ -98,14 +98,76 @@
      <widget class="QLabel" name="reglg">
       <property name="geometry">
        <rect>
-        <x>140</x>
-        <y>60</y>
+        <x>150</x>
+        <y>40</y>
         <width>551</width>
         <height>21</height>
        </rect>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="aut">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>100</y>
+        <width>141</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Regresión automática</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="atreg">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>100</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="autr">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>100</y>
+        <width>131</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_55">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>120</y>
+        <width>181</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>¿Cuántos grados tiene su polinomio?</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="gra">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
       </property>
      </widget>
     </widget>
