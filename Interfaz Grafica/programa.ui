@@ -59,9 +59,9 @@
      <widget class="QLabel" name="reglin">
       <property name="geometry">
        <rect>
-        <x>150</x>
+        <x>230</x>
         <y>10</y>
-        <width>561</width>
+        <width>471</width>
         <height>20</height>
        </rect>
       </property>
@@ -72,9 +72,9 @@
      <widget class="QLabel" name="regslg">
       <property name="geometry">
        <rect>
-        <x>150</x>
+        <x>230</x>
         <y>70</y>
-        <width>561</width>
+        <width>471</width>
         <height>20</height>
        </rect>
       </property>
@@ -98,9 +98,9 @@
      <widget class="QLabel" name="reglg">
       <property name="geometry">
        <rect>
-        <x>150</x>
+        <x>230</x>
         <y>40</y>
-        <width>551</width>
+        <width>461</width>
         <height>21</height>
        </rect>
       </property>
@@ -168,6 +168,45 @@
         <width>113</width>
         <height>20</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="lingr">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>10</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Guardar</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="exportarlg">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>40</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Guardar</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="exportarsg">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>70</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Guardar</string>
       </property>
      </widget>
     </widget>
@@ -250,14 +289,53 @@
      <widget class="QLabel" name="sin">
       <property name="geometry">
        <rect>
-        <x>120</x>
+        <x>200</x>
         <y>50</y>
-        <width>571</width>
+        <width>491</width>
         <height>20</height>
        </rect>
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="exportarsn">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>50</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Guardar</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="exportarpl">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>90</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Guardar</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="exportarpn">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>10</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Guardar</string>
       </property>
      </widget>
     </widget>
@@ -2446,6 +2524,32 @@
          <string>(valores entre 0 y 1)</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="expberno">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>20</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guardar</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="exportbrn">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>50</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guardar</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_10">
        <attribute name="title">
@@ -2549,6 +2653,32 @@
          <string>(valores entre 0 y 1)</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="exporbi">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>20</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guardar</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="exportbin">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>50</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guardar</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_11">
        <attribute name="title">
@@ -2627,6 +2757,32 @@
         </property>
         <property name="text">
          <string>0</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="exportex">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>20</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guardar</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="exporthex">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>50</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guardar</string>
         </property>
        </widget>
       </widget>
@@ -2717,6 +2873,32 @@
         </property>
         <property name="text">
          <string>Gráfico histograma</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="exportno">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>20</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guardar</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="exporthno">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>50</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guardar</string>
         </property>
        </widget>
       </widget>
@@ -2832,6 +3014,32 @@
          <string>Gráfico histograma</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="exporthi">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>20</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guardar</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="exporthhip">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>50</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guardar</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_14">
        <attribute name="title">
@@ -2897,6 +3105,32 @@
         </property>
         <property name="text">
          <string>Gráfico histograma</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="exportpo">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>20</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guardar</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="exporthpo">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>50</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guardar</string>
         </property>
        </widget>
       </widget>
@@ -2987,6 +3221,32 @@
         </property>
         <property name="text">
          <string>Gráfico histograma</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="exportun">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>20</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guardar</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="exporthun">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>50</y>
+          <width>101</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Guardar</string>
         </property>
        </widget>
       </widget>
@@ -5981,7 +6241,7 @@
          <string>0</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="hypoi_2">
+       <widget class="QLineEdit" name="yhuni">
         <property name="geometry">
          <rect>
           <x>120</x>
@@ -5994,7 +6254,7 @@
          <string>Frecuencia</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="hpoi_2">
+       <widget class="QLineEdit" name="nhuni">
         <property name="geometry">
          <rect>
           <x>120</x>
@@ -6094,7 +6354,7 @@
          <string>Porcentaje de color </string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="hxpoi_2">
+       <widget class="QLineEdit" name="xhuni">
         <property name="geometry">
          <rect>
           <x>120</x>
