@@ -9,14 +9,15 @@ import pandas as pd
 from scipy import stats
 from scipy.optimize import fsolve
 from math import e
-import xlrd
+import xlrd os
+import
 
 class programa(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi("programa.ui", self)
         self.pos=False
-
+        os.mkdir('graficas')
         self.lin=False
         self.lg=False
         self.sg=False
