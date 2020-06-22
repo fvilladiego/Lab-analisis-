@@ -9,8 +9,8 @@ import pandas as pd
 from scipy import stats
 from scipy.optimize import fsolve
 from math import e
-import xlrd os
-import
+import xlrd 
+import os
 
 class programa(QMainWindow):
     def __init__(self):
