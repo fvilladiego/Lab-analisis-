@@ -18,7 +18,7 @@ class programa(QMainWindow):
         uic.loadUi("programa.ui", self)
         self.pos=False
         try:
-            os.mkdir('dir1')
+            os.mkdir('graficas')
         except OSError as e:
             if e.errno != errno.EEXIST:
                 raise
