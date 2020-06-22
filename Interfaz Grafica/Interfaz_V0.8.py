@@ -11,13 +11,17 @@ from scipy.optimize import fsolve
 from math import e
 import xlrd 
 import os
-
+import errno
 class programa(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi("programa.ui", self)
         self.pos=False
-        os.mkdir('graficas')
+        try:
+            os.mkdir('dir1')
+        except OSError as e:
+            if e.errno != errno.EEXIST:
+                raise
         self.lin=False
         self.lg=False
         self.sg=False
