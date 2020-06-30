@@ -783,6 +783,7 @@ class programa(QMainWindow):
         return R2
 
     def sinusoidal(self):
+        
         g = int(20)
         if self.pos == False:
             if self.cantidad() == None:
@@ -850,15 +851,70 @@ class programa(QMainWindow):
                     k += 1
                 else:
                     k -= 1
-
+        
+        def fourier (w): #Ajuste datos 
+            
+            n = np.size(datos[:, 0])
+            A = np.empty([3,3])
+            A[0,0] = n
+            A[0,1] = np.sum(np.cos(w*x))
+            A[1,0] =A[0,1]
+            A[0,2] = np.sum(np.sin(w*x))
+            A[2,0] = A[0,2]
+            A[1,1] = np.sum(np.cos(w*x)**2)
+            A[2,2] = np.sum(np.sin(w*x)**2)
+            A[1,2] = np.sum(np.sin(w*x)*np.cos(w*x))
+            A[2,1] = A[1,2]
+            
+            B= np.empty((3))
+            B[0] = np.sum(y)
+            B[1] = np.sum(y*np.cos(w*x))
+            B[2] = np.sum(y*np.sin(w*x)) 
+                
+            sol = np.linalg.solve(A,B)
+            
+            return w , sol
+        
+        def coef_reg(w , sol):
+            (A0, A1, B1) = sol
+            
+            yp = A0 + A1*np.cos(w*x) + B1*np.sin(w*x)
+            
+            R2 = (np.var(yp)) / (np.var(y))
+            
+            return R2
+        
+        def optimize(w1):
+            wi = w1 - 0.5
+            
+            wmin = []
+            for l in np.linspace(wi , wi + 1.001 , 1000):
+                print(l , 'l')
+                coe= 1 - coef_reg(fourier(l)[0] , fourier(l)[1] )
+                wmin.append(coe)
+            for k in range(len(wmin)):
+                if wmin[k] == np.min(wmin):
+                    break
+            wfinal = wi + (k/1000)
+            
+            #print(wfinal)
+            (wfinal , tup ) = fourier(wfinal)
+            A0 = tup[0]
+            A1 = tup[1]
+            B1 = tup[2]
+            
+            return wfinal , A0 , A1 ,B1
+            
+        
+        
         if k > 0:  # Seno
-            c = solu[0]
-            w = np.sqrt((abs(solu[3]) * 6) / (solu[1]))
-            A = solu[1] / w
+            w_aprox = np.sqrt((abs(solu[3]) * 6) / (solu[1]))
+            
+            w , c , A, B = optimize(w_aprox)
+            
+            out = '{}sin({}x)+{}'.format(B, w, c)
 
-            out = '{}sin({}x)+{}'.format(A, w, c)
-
-            seno = A * np.sin(w * xt) + c
+            seno = B * np.sin(w * xt) + c
 
             if self.sn == True:
 
@@ -897,11 +953,10 @@ class programa(QMainWindow):
 
         else:  # Coseno
 
-            w = np.sqrt((abs(solu[4]) * 24) / (2 * abs(solu[2])))
-
-            A = (abs(solu[2]) * 2) / (w ** 2)
-
-            c = solu[0] - A
+            w_aprox = np.sqrt((abs(solu[4]) * 24) / (2 * abs(solu[2])))
+            
+            w , c , A, B = optimize(w_aprox)
+            
 
             out = '{}cos({}x)+{}'.format(A, w, c)
             self.sin.setText(out)
