@@ -852,8 +852,8 @@ class programa(QMainWindow):
                 else:
                     k -= 1
         
-        def fourier (w): #Ajuste datos 
-            
+        def fourier (w): #Ajuste datos
+
             n = np.size(datos[:, 0])
             A = np.empty([3,3])
             A[0,0] = n
@@ -872,46 +872,46 @@ class programa(QMainWindow):
             B[2] = np.sum(y*np.sin(w*x)) 
                 
             sol = np.linalg.solve(A,B)
-            
+
             return w , sol
         
         def coef_reg(w , sol):
+
             (A0, A1, B1) = sol
             
             yp = A0 + A1*np.cos(w*x) + B1*np.sin(w*x)
             
             R2 = (np.var(yp)) / (np.var(y))
-            
+
             return R2
         
         def optimize(w1):
             wi = w1 - 0.5
-            
             wmin = []
-            for l in np.linspace(wi , wi + 1.001 , 1000):
-                print(l , 'l')
-                coe= 1 - coef_reg(fourier(l)[0] , fourier(l)[1] )
-                wmin.append(coe)
+            try:
+                for l in np.linspace(wi , wi + 1.001 , 1000):
+                    coe= 1 - coef_reg(fourier(l)[0] , fourier(l)[1] )
+                    wmin.append(coe)
+            except:
+                None
+
             for k in range(len(wmin)):
                 if wmin[k] == np.min(wmin):
                     break
             wfinal = wi + (k/1000)
-            
-            #print(wfinal)
             (wfinal , tup ) = fourier(wfinal)
             A0 = tup[0]
             A1 = tup[1]
             B1 = tup[2]
-            
             return wfinal , A0 , A1 ,B1
             
         
         
         if k > 0:  # Seno
+
             w_aprox = np.sqrt((abs(solu[3]) * 6) / (solu[1]))
-            
+
             w , c , A, B = optimize(w_aprox)
-            
             out = '{}sin({}x)+{}'.format(B, w, c)
 
             seno = B * np.sin(w * xt) + c
@@ -954,12 +954,12 @@ class programa(QMainWindow):
         else:  # Coseno
 
             w_aprox = np.sqrt((abs(solu[4]) * 24) / (2 * abs(solu[2])))
-            
+
             w , c , A, B = optimize(w_aprox)
-            
+
 
             out = '{}cos({}x)+{}'.format(A, w, c)
-            self.sin.setText(out)
+
             coseno = A * np.cos(w * xt) + c
 
             if self.sn == True:
@@ -977,9 +977,17 @@ class programa(QMainWindow):
                 plt.ylabel(graph_y)
                 plt.grid(b=True)
                 plt.legend()
-                plt.show()
-                plt.close()
-                self.sn = False
+                if self.expsn == True:
+                    plt.savefig("graficas/" + graph_title)
+                    plt.close()
+                    self.gu()
+                self.expsn = False
+                if self.grsn == True:
+                    self.sin.setText(out)
+                    plt.show()
+                    plt.close()
+                self.grsn = False
+
 
             yp = A * np.cos(w * x) + c
 
