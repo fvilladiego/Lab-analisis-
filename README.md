@@ -4,7 +4,8 @@
 Lab-analisis es un programa que facilita el analisis de laboratorios gracias a el número de herramientas disponibles en él. La prioridad del programa es ahorrar tiempo al usuario y que este pueda rápidamente sacar el mejor provecho de sus datos. Regresiones, Distribuciones , gráficas y más. 
 
 ## Empezando
-El programa fue desarrollado en Python 3.7, en múltiples plataformas por lo cúal es poco probable que ocurran conflictos de hardware.
+
+El programa fue desarrollado en Python 3.7. Inicialmente su uso está destinado para Windows 10 , aunque no debería de generar conflicto en otros sistemas operativos. 
 
 ### Prerequisitos
 Python 3.7
