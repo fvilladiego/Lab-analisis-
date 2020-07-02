@@ -40,7 +40,7 @@ Para correr el programa se debe verificar que la carpeta 'Lab-analisis--master\I
 ## Herramientas
 ### Ingresar datos 
 
-Lab-analisis ofrece varias herramientas. Ventana izquierda superior le da dos opciones al usuario para ingresar sus datos: una manual , y una ingresando un excel, con su respectiva ruta dentro del sistema y Hoja de cálculo. Para el ingreso de datos manuales se debe especificar en la parte superior izquierda el número de datos que desea ingresar (entiéndase datos por 'parejas de datos').
+Lab-analisis ofrece varias herramientas. Ventana derecha superior le da dos opciones al usuario para ingresar sus datos: una manual , y una ingresando un excel, con su respectiva ruta dentro del sistema y Hoja de cálculo. Para el ingreso de datos manuales se debe especificar en la parte superior izquierda el número de datos que desea ingresar (entiéndase datos por 'parejas de datos').
 
 Se hace la aclaración que el programa espera dos columnas solamente, correspondientes a los datos de el eje 'x' en la columna izquierda, y 'y' en la columna derecha.
 
